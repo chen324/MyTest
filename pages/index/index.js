@@ -5,14 +5,53 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userInfo: {},
+    flag: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // console.log(this)
+  },
 
+  getUserInfo(){
+    //判断是否授权
+    wx.getSetting({
+      success: (res) => {
+        // console.log(res);
+        if (res.authSetting['scope.userInfo']) {
+          //授权了
+          this.setData({
+            flag: true
+          })
+          wx.getUserInfo({
+            success: (data) => {
+              // console.log(data);
+              this.setData({
+                userInfo: data.userInfo
+              })
+            },
+          });
+        } else {
+          //没授权
+          this.setData({
+            flag: false
+          })
+        }
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+  },
+
+  handleGetUserInfo(e) {
+    console.log(e.detail.rawData)
+    if(e.detail.rawData){
+      this.getUserInfo()
+    }
   },
 
   /**
