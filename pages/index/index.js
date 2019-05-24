@@ -7,7 +7,13 @@ Page({
   data: {
     userInfo: {},
     flag: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+  },
+
+  //跳转到list页面
+  handleClick(){
+    wx.navigateTo({
+      url: '/pages/list/list' 
+    }) 
   },
 
   /**
@@ -15,6 +21,7 @@ Page({
    */
   onLoad: function (options) {
     // console.log(this)
+    this.getUserInfo()
   },
 
   getUserInfo(){

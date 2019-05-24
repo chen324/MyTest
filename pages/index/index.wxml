@@ -3,7 +3,7 @@
   <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
   <button open-type="getUserInfo" style="display: {{flag?'none':'block'}}" bindgetuserinfo="handleGetUserInfo">请授权</button>
   <text class="userName">hello {{userInfo.nickName}}</text>
-  <view class="goStudy">
+  <view class="goStudy" bindtap="handleClick">
     <text>开启小程序之旅</text>
   </view>
 </view>
