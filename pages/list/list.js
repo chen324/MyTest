@@ -19,6 +19,14 @@ Page({
     })
   },
 
+  clickToDetail(event){
+    // console.log(event)
+    let index = event.target.dataset.index
+    wx.navigateTo({
+      url: '/pages/detail/detail?index=' + index,
+    })
+  },
+
   toDetail(e){
     // console.log(e)
     let index = e.currentTarget.dataset.index
