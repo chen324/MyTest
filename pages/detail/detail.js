@@ -18,7 +18,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     // console.log(options)
     let index = options.index
     this.setData({
@@ -42,21 +42,21 @@ Page({
       })
     }
 
-    //监听音乐播放
+    // 监听音乐播放
     wx.onBackgroundAudioPlay(() => {
       // console.log('音乐播放')
       // 修改isMusicPlay的值
       this.setData({
         isMusicPlay: true
       })
-      //修改appDatas的值
+      // 修改appDatas的值
       appDatas.data.isPlay = true
       appDatas.data.pageIndex = index
     })
     // 监听音乐暂停
     wx.onBackgroundAudioPause(() => {
       // console.log('音乐暂停')
-      //修改isMusicPlay的值
+      // 修改isMusicPlay的值
       this.setData({
         isMusicPlay: false
       })
@@ -64,8 +64,8 @@ Page({
       appDatas.data.isPlay = false
     })
 
-    //判断音乐是否播放
-    if(appDatas.data.isPlay && appDatas.data.pageIndex === index){
+    // 判断音乐是否播放
+    if (appDatas.data.isPlay && appDatas.data.pageIndex === index) {
       this.setData({
         isMusicPlay: true,
       })
@@ -125,64 +125,15 @@ Page({
         dataUrl,
         title
       })
-    }else{
+    } else {
       wx.pauseBackgroundAudio()
     }
   },
 
   //分享功能
-  handleShare(){
+  handleShare() {
     wx.showActionSheet({
       itemList: ['分享到朋友圈', '分享到qq空间', '分享到微博'],
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })
